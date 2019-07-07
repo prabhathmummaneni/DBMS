@@ -1,1 +1,55 @@
+﻿create table Cust (custid varchar(3) ,Lname Varchar(15), Fname Varchar(15), area Varchar(2), phoneno numeric(8,0),Primary Key(custid));
+create table Movie(Mvno Numeric(2,0), title Varchar(25), type Varchar(10), star Varchar(25), price Numeric(8,2), Primary Key(Mvno));
+create table Invoice(Invno Varchar(3) , Mvno Numeric(2,0), custid Varchar(3) ,issueDate Date, retDate Date, Primary Key(Invno), Foreign key(mvno) REFERENCES Movie(mvno), Foreign key(custid) REFERENCES Cust(custid));
+
+insert into cust(custid, Lname, Fname, Area, PhoneNo) values ('A01' ,'Bayross', 'Ivan', 'sa' ,6125467 );
+insert into cust(custid, Lname, Fname, Area, PhoneNo) values ('A02' ,'Saitwal', 'Vandana', 'mu', 5560379 );
+insert into cust(custid, Lname, Fname, Area, PhoneNo) values ('A03' ,'Jaguste', 'Pramada', 'da' ,4563891);
+insert into cust(custid, Lname, Fname, Area, PhoneNo) values ('A04' ,'Navindgi', 'Basu', 'ba' ,6125401 );
+insert into cust(custid, Lname, Fname, Area, PhoneNo) values ('A05' ,'Sreedha', 'Ravi', 'va' ,NULL);
+insert into cust(custid, Lname, Fname, Area, PhoneNo) values ('A06' ,'NULL', 'Rukmini', 'gh' ,5125274 );
+
+insert into movie(mvno, title, type, star, price) values (1, 'Bloody Vengeance','action', 'Jackie Chan', 100.00 );
+insert into movie(mvno, title, type, star, price) values (2, 'The Firm','thriller ', 'Tom cruise ', 200.00 );
+insert into movie(mvno, title, type, star, price) values (3, 'Pretty Woman','romance', 'Richard Gere', 150.00 );
+insert into movie(mvno, title, type, star, price) values (4, 'Home Alone','Comedy', 'Macaulay Culkin', 150.55 );
+insert into movie(mvno, title, type, star, price) values (5, 'The Fugitive','Thriller', 'Harrison Ford', 200.00 );
+insert into movie(mvno, title, type, star, price) values (6, 'Coma', 'Suspense','Michael Douglas', 100.00 );
+insert into movie(mvno, title, type, star, price) values (7, 'Dracula','Horror', 'Gary Oldman', 150.25 );
+insert into movie(mvno, title, type, star, price) values (8, 'Quick change','Comedy', 'Bill Murray', 100.00 );
+insert into movie(mvno, title, type, star, price) values (9, 'Gone with the wind','Drama', 'Clarke Gable', 200.00);
+insert into movie(mvno, title, type, star, price) values (10, 'Carry on Doctor','Comedy', ' Leslie Phillips', 100.00 );
+
+insert into invoice(invno, mvno, custid, issueDate, retDate) values ('i01', 4 ,'A01', '23-jul-2012', '25-jul-2012');
+insert into invoice(invno, mvno, custid, issueDate, retDate) values ('i02', 3 ,'A02', '12-aug-2012', '15-aug-2012');
+insert into invoice(invno, mvno, custid, issueDate, retDate) values ('i03', 1 ,'A02', '15-aug-2012 ', '18-aug-2012');
+insert into invoice(invno, mvno, custid, issueDate, retDate) values ('i04', 6 ,'A03', '10-sep-2012 ', '13-sep-2012');
+insert into invoice(invno, mvno, custid, issueDate, retDate) values ('i05', 7 ,'A04', '05-aug-2012', '08-aug-2012');
+insert into invoice(invno, mvno, custid, issueDate, retDate) values ('i06', 2 ,'A06', '18-sep-2012', '20-sep-201');
+insert into invoice(invno, mvno, custid, issueDate, retDate) values ('i07', 9 ,'A05', '07-jul-2012', '10-jul-2012');
+insert into invoice(invno, mvno, custid, issueDate, retDate) values ('i08', 9 ,'A01', '11-aug-2012 ', '14-aug-2012');
+insert into invoice(invno, mvno, custid, issueDate, retDate) values ('i09', 5 ,'A03', '06-jul-2012', '09-jul-2012');
+insert into invoice(invno, mvno, custid, issueDate, retDate) values ('i10', 8 ,'A06', '03-sep-2012', '06-sep-2012 ');
+
+/*1*/ select Lname from cust;
+/*2*/ select * from cust;
+/*3*/ select Fname , area from cust;
+/*4*/ select type from movie;
+/*5*/ select fname from cust where SUBSTR(fname, 2,1) = 'a';
+/*6*/ select lname from cust where lname LIKE('%s') or lname like('%j');
+/*7*/ select area from cust where SUBSTR(area,2,1) = 'a';
+/*8*/ select lname from cust where area = 'ba' or area ='mu' or area ='gh';
+/*9*/ select lname from cust where PhoneNo is null;
+/*10*/ select * from invoice where extract ( month from issueDate) = 09;  
+/*11*/ select * from invoice where custid in ('A01','A02');
+/*12*/ select title from movie where type='action' or type = 'Comedy';
+/*13*/ select title from movie where price >150 and price <=200;
+/*14*/ select price*15 from movie where price >159;
+/*15*/ select price*15 "NEW_PRICE" from movie where price>159;
+/*16*/ select * from movie order by title;
+/*17*/ select title,type from movie where type<>'horror';
+/*18*/ select sqrt(price) from movie;
+/*19*/ select type,avg(price) from movie group by type;
+/*20*/ 
+
 
