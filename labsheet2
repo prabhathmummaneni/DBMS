@@ -6,16 +6,19 @@ Consultation_fee NUmeric(5,2),
 Constraint c1 Check (Consultation_fee > 50),
 primary key (Did));
 
-create table Patient	(Pid Int,
+create table Patient	(
+Pid Int,
 Pname Varchar(25),
 Date_of_birth Date,
 Address Varchar(20),
-primary key (Pid));
+primary key (Pid)
+);
 
 
 
-create table Treat (	Did Int,
-Pid Int,
+create table Treat (	
+Did int,
+Pid int,
 Diagnosis Varchar(30) not null,
 Treat_id Int,
 Treat_date date,
